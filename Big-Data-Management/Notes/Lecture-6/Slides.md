@@ -35,7 +35,7 @@ This expands on the "Decoupled" concept, focusing on how queries are executed ac
 
 **Multi-Platform:** A single query is split and processed across multiple engines. This is further divided into three subtypes
 * **Opportunistic:** Using multiple platforms primarily to reduce costs (e.g., time, money).
-*** Mandatory:** Using multiple platforms because a single platform cannot run the entire query (e.g., due to specific operator requirements).
+* **Mandatory:** Using multiple platforms because a single platform cannot run the entire query (e.g., due to specific operator requirements).
 * **Polystore:** Using multiple platforms because the data itself is physically stored across different storage engines (e.g., joining data from a CSV file with data in a database)
 
 ### System-Store Quadrant

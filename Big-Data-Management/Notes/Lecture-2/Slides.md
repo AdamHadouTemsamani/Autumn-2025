@@ -290,6 +290,7 @@ In this hybrid model, each record belongs to exactly one partition, but that par
 * A single physical node often acts as the Leader for one partition and a Follower for several others.
 
 Results in system that is: **Scalable while remainly hihghy fault tolerant**
+
 ---
 
 

@@ -391,13 +391,13 @@ pipeline.predict(X_test)
 
 ### Purposes of using pipelines
 **Convenience and encapsulation**
-* You only have to call fit and predict once on your data to fit a whole sequence of estimators.
+* You only have to **call fit and predict once** on your data to fit a whole sequence of estimators.
 
 **Joint parameter selection**
-* You can grid search over parameters of all estimators in the pipeline at once.
+* You can **grid search** over **parameters of all estimators** in the pipeline at once.
 
 **Safety**
-* Pipelines help avoid leaking statistics from your test data into the trained model in cross-validation, by ensuring that the same samples are used to train the transformers and predictors.
+* Pipelines help **avoid leaking statistics** from your test data into the trained model in cross-validation, by ensuring that the same samples are used to train the transformers and predictors.
 
 ## High-dimensional data
 

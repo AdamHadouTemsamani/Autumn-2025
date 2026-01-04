@@ -1,58 +1,67 @@
 # ML lifecycle 2 - Training models on big data
 
 ## Decision trees
-Decision Trees: These models split data based on features to classify or regress. The split order is determined by metrics like **Gini index** or **Entropy** (which measure how "mixed" the classes are).
+Versatile, "white box" models used for both classification and regression
+
+These models split data based on features to classify or regress. The split order is determined by metrics like **Gini index** or **Entropy** (which measure how "mixed" the classes are).
 
 ![alt text](images/decision-tree.png)
 
-### Building decision trees
 To find the order of building trees, compute either:
-* gini index
-* entropy
+* Gini index
+* Entropy
 
 Each is 0 when all instances belong to the same class.
 Intuitively, they show how informative a feature is.
 
 ### Decision trees limitations
-* Over-complex trees => **overfitting**
-  * Solutions: pruning, minimum number of samples required at a leaf node, maximum depth of the tree
-* If small variations in the data - > completely different tree being generated => **unstable**
-  * Solution: ensembles
-* Heuristic algorithms (greedy) => **not globally optimal** decision tree (NP-complete)
-  * Solution: problem mitigated by training multiple trees in an ensemble learner, where the features and
-samples are randomly sampled with replacement
-* If some classes dominate => **biased** trees
-  * Solution: balance the dataset prior to fitting with the decision tree
+**Overfitting**: Over-complex trees can fit noise in the training data.
+* Solution: Pruning, setting a minimum number of samples required at a leaf node, or limiting depth of the tree
+
+**Instability**: Small variations in data can result in completely different trees
+* Solution: Use Ensembles (combining multiple trees).
+
+**Not Globally Optimal:** Trees use heuristic (greedy) algorithms, which do not guarantee the globally best tree (an NP-complete problem)
+
+**Bias:** Dominant classes can lead to biased trees
+* Solution: Balance the dataset before fitting the model.
 
 ### Ensemble models in ML
-**Ensemble Learning**: Combines multiple models to improve performance.
+**Ensemble Learning:** The practice of using multiple learning algorithms to obtain better predictive performance than could be obtained from any of the individual models
 
 Two ensemble methods: **Bagging** and **Boosting**:
 * **Bagging** (Bootstrap Aggregation): Trains models (like Random Forests) in parallel on random subsets of data. It reduces variance.
+  * Training: Each collection of subset data is used to train a separate model
+  * Aggregation: The final prediction is the average of all the individual model predictions
+
 * **Boosting**: Trains models sequentially. Each new model attempts to correct the errors (residuals) of the previous one.
+  * The final prediction is a weighted sum of all the predictions (unlike the simple average in bagging).
 
 Example:
 ![alt text](images/ensemble-1.png)
 
+---
+
 **Bagging** (Bootstrap aggregation)
-* create several subsets of data from training sample chosen randomly with replacement
-* each collection of subset data is used to train a model
-* take average of all the predictions
-* random forest: sample features 
+* Create several subsets of data from training sample chosen randomly with replacement
+* Each collection of subset data is used to train a model
+* Take average of all the predictions
+* Random forest: sample features 
 ![alt text](images/bagging.png)
 
-
-Boosting
+**Boosting**
 * models are learnt sequentially, each one improving on the previous error
 * improve performance on instances where the previous model performed poorly
 * final prediction is a weighted sum of all of the predictions 
 ![alt text](images/boosting.png)
 
+
 ### Extreme Gradient Boosting (XGBoost)
 **Extreme Gradient Boosting** = a framework for distributed ML
 
-Predicting drug effectiveness example:
+#### Predicting drug effectiveness example
 ![alt text](images/xgboost-1.png)
+
 * **Residuals**: The model starts with an initial prediction (e.g., 0.5). Subsequent trees are built to predict the residuals (the difference between the actual value and the prediction) rather than the target value itself.
 * **Similarity Score**: XGBoost uses a similarity score to evaluate splits, calculated as:
   * $$Similarity Score = \frac{(Sum~of~Residuals)^2}{Number~of~Residuals + \lambda}$$
@@ -139,12 +148,15 @@ Consider a different decision threshold to 22.5
 * Operations inside a neuron: multiply each input ($x_i$) with the corresponding weight ($w_i$), add them up, add bias, and apply an activation function.
 
 ### Linear vs. non-linear
-Linear transformations:
+
+**Linear Transformations:**
+* These involve simple linear combinations of inputs, such as multiplying by a scalar and adding a constant.
 * $2*x_1 + 4$
 * $5*x_2 - 2$
 ![alt text](images/nn-3.png)
 
-Non-linear transformations:
+**Non-linear transformations:**
+* These functions introduce non-linearity, allowing the network to learn complex patterns and decision boundaries
 * $max(2*x_1,0)$
 * $1/(1+exp(-x_2))$
 

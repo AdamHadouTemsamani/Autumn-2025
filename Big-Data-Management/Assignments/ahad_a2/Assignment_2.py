@@ -141,7 +141,7 @@ def candidate_models():
     }
     return models
 
-def train_model(df, dataset_name, models, features, label, experiment_name, all_model_info):
+def train_model(df, dataset_name, models, features, label, all_model_info):
 
     # Drop rows missing any required column
     needed_cols = features + label
@@ -167,9 +167,7 @@ def train_model(df, dataset_name, models, features, label, experiment_name, all_
 
         # Mlflow 
         with mlflow.start_run(run_name=f"{dataset_name}_{model_name}") as run:
-            experiment_name = f"{experiment_name}_{model_name}"
-            mlflow.set_experiment(experiment_name)
-
+            mlflow.set_tag("feature_type", "SinCos" if "SinCos" in dataset_name else "WindVector")
             run_id = run.info.run_id
             experiment_id = run.info.experiment_id
             mlflow.log_param("dataset", dataset_name)
@@ -295,6 +293,7 @@ def main():
 
     mlflow.sklearn.autolog()
     mlflow.set_tracking_uri("http://127.0.0.1:5000")
+
     mlflow.set_experiment("Assignment 2 - WindPower Prediction")
 
     all_model_runs_sincos = {}
@@ -302,9 +301,9 @@ def main():
 
     for name, df in datasets.items():
         if "SinCos" in name:
-            train_model(df, name, candidate_models(), sincos_X, y, experiment_name="SinCos", all_model_info=all_model_runs_sincos)
+            train_model(df, name, candidate_models(), sincos_X, y, all_model_info=all_model_runs_sincos)
         if "WindVector" in name:
-            train_model(df, name, candidate_models(), windvector_X, y, experiment_name="WindVector", all_model_info=all_model_runs_windvector)
+            train_model(df, name, candidate_models(), windvector_X, y, all_model_info=all_model_runs_windvector)
     
     # Initialize MLflow client and get registered models
     mlflow_client = mlflow.tracking.MlflowClient()

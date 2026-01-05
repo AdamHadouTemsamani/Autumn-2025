@@ -1,3 +1,23 @@
-.DS_Store
+# 1. Ignore everything globally
+*
 
-Big-Data-Management/Slides/BDM_Merged.pdf
+# 2. Ignore all hidden files/folders (.*)
+.*
+**/.*
+
+# 3. Allow only specific directories (need to allow parents for Git to see children)
+!Big-Data-Management/
+!Big-Data-Management/Assignments/
+!Big-Data-Management/Assignments/ahad_a1/
+!Big-Data-Management/Assignments/ahad_a2/
+
+# 4. Ignore ALL subdirectories inside the assignments
+Big-Data-Management/Assignments/ahad_a1/*/
+Big-Data-Management/Assignments/ahad_a2/*/
+
+# 5. Allow root files inside those assignments
+!Big-Data-Management/Assignments/ahad_a1/*
+!Big-Data-Management/Assignments/ahad_a2/*
+
+# 6. Allow the root README
+!README.md

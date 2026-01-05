@@ -21,3 +21,6 @@ Big-Data-Management/Assignments/ahad_a2/*/
 
 # 6. Allow the root README
 !README.md
+
+# 7. Allow the specific PDF inside Assignments
+!Big-Data-Management/Assignments/Adam_a1.pdf

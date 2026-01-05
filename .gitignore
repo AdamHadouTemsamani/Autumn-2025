@@ -10,14 +10,20 @@
 !Big-Data-Management/Assignments/
 !Big-Data-Management/Assignments/ahad_a1/
 !Big-Data-Management/Assignments/ahad_a2/
+!Big-Data-Management/Assignments/chbl_a1/
+!Big-Data-Management/Assignments/chbl_a2/
 
 # 4. Ignore ALL subdirectories inside the assignments
 Big-Data-Management/Assignments/ahad_a1/*/
 Big-Data-Management/Assignments/ahad_a2/*/
+Big-Data-Management/Assignments/chbl_a1/*/
+Big-Data-Management/Assignments/chbl_a2/*/
 
 # 5. Allow root files inside those assignments
 !Big-Data-Management/Assignments/ahad_a1/*
 !Big-Data-Management/Assignments/ahad_a2/*
+!Big-Data-Management/Assignments/chbl_a1/*
+!Big-Data-Management/Assignments/chbl_a2/*
 
 # 6. Allow the root README
 !README.md

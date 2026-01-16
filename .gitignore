@@ -6,6 +6,7 @@
 **/.*
 
 # 3. Allow only specific directories (need to allow parents for Git to see children)
+!Game-Programming/
 !Big-Data-Management/
 !Big-Data-Management/Assignments/
 !Big-Data-Management/Assignments/ahad_a1/
@@ -20,6 +21,7 @@ Big-Data-Management/Assignments/chbl_a1/*/
 Big-Data-Management/Assignments/chbl_a2/*/
 
 # 5. Allow root files inside those assignments
+!Game-Programming/**
 !Big-Data-Management/Assignments/ahad_a1/*
 !Big-Data-Management/Assignments/ahad_a2/*
 !Big-Data-Management/Assignments/chbl_a1/*
@@ -30,3 +32,4 @@ Big-Data-Management/Assignments/chbl_a2/*/
 
 # 7. Allow the specific PDF inside Assignments
 !Big-Data-Management/Assignments/Adam_a1.pdf
+!Big-Data-Management/Assignments/Adam_a2.pdf
